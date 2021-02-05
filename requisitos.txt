@@ -1,0 +1,90 @@
+- Autenticação de utilizador
+- Registo de utilizador
+- Cada utilizador possui varias permissoes. Estas podem ser de admin ou mesmo só de utilizador.
+- Cada sala de mensagens pode ter um ou mais administradores.
+- Possibilidade de excluir salas <- Utilizador administrador da sala ou administrador geral.
+- Possibilidade de eliminar mensagens <- Utilizador que mandou a mensagem ou administrador de sala/geral
+
+- Cada utilizador pode criar até x salas <- ao criar fica administrador da mesma 
+- Administrador de sala pode atribuir administrador de sala a outros e remover, somente o administrador original!
+
+Permissoes:
+    Cada rota da API vai ter uma permissão.
+    Exemplo de permissoes:
+        chatapp.moderator
+        chatapp.admin
+        chatapp.user.send
+        chatapp.user.receive
+        chatapp.user.create.room
+
+Base de dados:
+    user:
+        - id            :INT            NOT NULL AUTO_INCREMENT
+        - username      :VARCHAR(50)    NOT NULL
+        - password      :VARCHAR(255)   NOT NULL
+        - name          :VARCHAR(50)    NOT NULL
+        - token         :VARCHAR(255)
+        - tokenExpDate  :INT
+	    - createdAt	    :INT		    NOT NULL
+        - deletedAt     :INT
+
+    permission: 
+        - id            :INT            NOT NULL AUTO_INCREMENT
+        - name          :VARCHAR(50)    NOT NULL
+        - description   :VARCHAR(255)
+
+    userpermission:
+        - user_id       :INT            NOT NULL
+        - permission_id :INT            NOT NULL
+        - active        :BIT            NOT NULL DEFAULT(1)
+
+    routepermission:
+        - id            :INT            NOT NULL
+        - permission_id :INT            NOT NULL
+        - routeName     :VARCHAR(50)    NOT NULL
+        - active        :INT            NOT NULL DEFAULT(1)
+
+    room:
+        - id            :INT            NOT NULL AUTO_INCREMENT
+        - user_id       :INT            NOT NULL
+        - name          :VARCHAR(50)    NOT NULL
+        - createdAt     :INT            NOT NULL
+        - deletedAt     :INT
+
+    message:
+        - id            :INT            NOT NULL AUTO_INCREMENT
+        - user_id       :INT            NOT NULL
+        - room_id       :INT            NOT NULL
+        - content       :VARCHAR(640)   NOT NULL
+        - sentAt        :INT            NOT NULL
+        - deletedAt     :INT
+
+    member:
+        - room_id       :INT            NOT NULL
+        - user_id       :INT            NOT NULL
+        - addedAt       :INT            NOT NULL
+        - admin         :BIT            NOT NULL DEFAULT(0)
+
+API:
+    Status das respostas:
+        GET:            200 OK
+        POST:           201 CREATED
+        PUT:            200 OK
+        DELETE:         200 OK
+        INVALID TOKEN:  401 Unauthorized
+        NO PERMISSION:  403 Forbidden
+        ERRO:           400 Bad Request
+
+    4xx Responses:
+        {
+            message: "Something",
+            errors : [
+                [Object object],
+                [Object object],
+                [Object object]
+            ] 
+        }
+
+Por fazer:
+    - verificação ao dar e remover permissao de admin numa room, se é o owner ou nao
+    

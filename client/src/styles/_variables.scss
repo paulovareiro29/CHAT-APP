@@ -1,0 +1,31 @@
+
+$breakpoints : (
+    mobile: "only screen and (max-width: 320px)",
+    tablet: "only screen and (max-width: 768px)",
+    laptop: "only screen and (max-width: 1600px)",
+);
+
+$theme-colors: (
+    "primary": #47DDFF,
+    "secondary": #ced4da,
+    "danger": #dc3545,
+    "warning": #ffcd39,
+    "white": #fff,
+    "black": #2C2C2C,
+);
+
+$text-colors: (
+    "primary": white,
+    "secondary": white,
+    "danger" : white, 
+    "warning": #2C2C2C,
+    "white": #fff,
+    "black": #2C2C2C,
+);
+
+$theme-colors-hover: (
+    "primary": #00b7ff,
+    "secondary": #adb5bd,
+    "danger": #b02a37,
+    "warning": #ffc107,
+)

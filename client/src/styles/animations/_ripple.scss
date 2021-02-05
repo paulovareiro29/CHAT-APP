@@ -1,0 +1,33 @@
+
+.ripple-effect{
+    display: flex;
+    flex-basis: auto;
+
+    .ripple {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        pointer-events: none;
+        border-radius: 50%;
+        animation-name: animate;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+}
+
+
+
+
+@keyframes animate {
+    0% {
+        width: 0px;
+        height: 0px;
+        opacity: 0.5;
+    }
+
+    100% {
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+    }
+}

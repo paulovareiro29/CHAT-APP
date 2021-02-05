@@ -1,0 +1,110 @@
+.pv-btn {
+    position: relative;
+    overflow: hidden;
+
+    border: none;
+    cursor: pointer;
+    min-width: 7em;
+    min-height: 2.5em;
+    font-size: 1em;
+    border-radius: 500px;
+    transition:
+        color 0.3s ease,
+        background-color 0.3s ease;
+
+    &:focus {
+        outline: none;
+    }
+
+    &.primary {
+        background: map-get($theme-colors, "primary");
+        color: map-get($text-colors, "primary");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors-hover, "primary");
+        }
+    }
+
+    &.secondary {
+        background: map-get($theme-colors, "secondary");
+        color: map-get($text-colors, "secondary");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors-hover, "secondary");
+        }
+    }
+
+    &.danger {
+        background: map-get($theme-colors, "danger");
+        color: map-get($text-colors, "danger");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors-hover, "danger");
+        }
+    }
+
+    &.warning {
+        background: map-get($theme-colors, "warning");
+        color: map-get($text-colors, "warning");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors-hover, "warning");
+        }
+    }
+
+    &.outline-primary {
+        background: transparent;
+        color: map-get($theme-colors, "primary");
+        border: 1px solid map-get($theme-colors, "primary");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors, "primary");
+            border: 1px solid map-get($theme-colors, "primary");
+            color: map-get($text-colors, "primary");
+        }
+    }
+
+    &.outline-secondary {
+        background: transparent;
+        color: map-get($theme-colors, "secondary");
+        border: 1px solid map-get($theme-colors, "secondary");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors, "secondary");
+            border: 1px solid map-get($theme-colors, "secondary");
+            color: map-get($text-colors, "secondary");
+        }
+    }
+
+    &.outline-warning {
+        background: transparent;
+        color: map-get($theme-colors, "warning");
+        border: 1px solid map-get($theme-colors, "warning");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors, "warning");
+            border: 1px solid map-get($theme-colors, "warning");
+            color: map-get($text-colors, "warning");
+        }
+    }
+
+    &.outline-danger {
+        background: transparent;
+        color: map-get($theme-colors, "danger");
+        border: 1px solid map-get($theme-colors, "danger");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors, "danger");
+            border: 1px solid map-get($theme-colors, "danger");
+            color: map-get($text-colors, "danger");
+        }
+    }
+}
