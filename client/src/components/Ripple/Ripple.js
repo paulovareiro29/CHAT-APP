@@ -34,8 +34,8 @@ export const Ripple = ({color = "#FFFFFF",duration = 1000, children}) => {
       }
 
     return (
-        <span className="ripple-effect" onClick={createRipple}>
+        <div className="ripple-effect" onClick={createRipple}>
             {children}
-        </span>
+        </div>
     )
 }

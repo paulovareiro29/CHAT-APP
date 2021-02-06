@@ -7,7 +7,7 @@ import { Button } from "../../components/Button/Button";
 import { useState } from "react";
 import { Shake } from "../Shake/Shake";
 
-export const LoginForm = () => {
+export const LoginForm = ({changeWindow}) => {
   const history = useHistory();
 
   const { register, errors, handleSubmit } = useForm();
@@ -75,7 +75,7 @@ export const LoginForm = () => {
 
       <div className="login-form-footer">
         <span>Don't have an account?</span>
-        <Button className="outline-primary">Sign Up</Button>
+        <Button onClick={changeWindow} className="outline-primary">Sign Up</Button>
       </div>
     </div>
   );

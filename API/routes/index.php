@@ -17,13 +17,14 @@ $app->add(HeadersMiddleware::class . ':addHeaders');
 $app->group('', function () use ($app) {
     $app->post('/login', UserController::class . ':login');
     $app->post('/validateToken', UserController::class . ':validateToken');
-
+    $app->post('/user/', UserController::class . ':create'); //registo utilizador
+    
     $app->group('', function () use ($app) {
 
         $app->group('/user', function () use ($app) {
             $app->get('/', UserController::class . ':index');
             $app->get('/{id}', UserController::class . ':show');
-            $app->post('/', UserController::class . ':create');
+
             $app->put('/{id}', UserController::class . ':update');
             $app->delete('/{id}', UserController::class . ':delete');
 

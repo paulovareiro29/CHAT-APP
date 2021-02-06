@@ -9,6 +9,11 @@
     align-items: center;
     flex-direction: column;
     overflow: hidden;
+
+    .full {
+        width: 1000px;
+        height: 1000px;
+    }
 }
 
 

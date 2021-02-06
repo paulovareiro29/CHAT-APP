@@ -1,3 +1,5 @@
+$slide-timing: 2s;
+
 #landing {
     position: relative;
     display: flex;
@@ -7,17 +9,19 @@
 
     background: url('../../images/landing-bg.svg') no-repeat fixed left;
 
-    @media #{map-get($breakpoints, "tablet")}{
-        background: url('../../images/landing-bg-2.svg') no-repeat fixed left; 
+    @media #{map-get($breakpoints, "tablet")} {
+        background: url('../../images/landing-bg-2.svg') no-repeat fixed left;
     }
 
-    >.right {
+    >.login,
+    >.signup {
         position: absolute;
 
-        @media #{map-get($breakpoints, "laptop") }{
+        @media #{map-get($breakpoints, "laptop") } {
             width: 60%;
         }
-        @media #{map-get($breakpoints, "tablet") }{
+
+        @media #{map-get($breakpoints, "tablet") } {
             width: 100%;
         }
 
@@ -28,5 +32,69 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    >.signup{
+        right: 120%;
+    }
+
+    &.login {
+        >.login {
+            position: absolute;
+            right: 0;
+            -webkit-animation: slide-in-left $slide-timing normal;
+            animation: slide-in-left $slide-timing normal;
+            z-index: 2;
+        }
+
+        >.signup {
+            position: absolute;
+            right: 120%;
+            -webkit-animation: slide-out-left $slide-timing normal;
+            animation: slide-out-left $slide-timing normal;
+            z-index: 1;
+        }
+    }
+
+    &.signup {
+        >.login {
+            position: absolute;
+            right: 120%;
+            -webkit-animation: slide-out-left $slide-timing normal;
+            animation: slide-out-left $slide-timing normal;
+            z-index: 1;
+        }
+
+        >.signup {
+            position: absolute;
+            right: 0;
+            -webkit-animation: slide-in-left $slide-timing normal;
+            animation: slide-in-left $slide-timing normal;
+            z-index: 2;
+        }
+    }
+}
+
+@-webkit-keyframes slide-in-left {
+    0% {
+        right: 120%;
+    }
+}
+
+@keyframes slide-in-left {
+    0% {
+        right: 120%;
+    }
+}
+
+@-webkit-keyframes slide-out-left {
+    0% {
+        right: 0;
+    }
+}
+
+@keyframes slide-out-left {
+    0% {
+        right: 0;
     }
 }

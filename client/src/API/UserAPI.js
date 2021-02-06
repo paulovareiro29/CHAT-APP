@@ -30,6 +30,28 @@ const login = (data, onSuccess, onFail) => {
   );
 };
 
+const signup = (data, onSuccess, onFail) => {
+  return API.POST(
+    "/user/",
+    {
+      username: data.username,
+      password: data.password,
+      name: data.name
+    },
+    (res) => {
+      console.log("user created")
+      if (Utils.isFunction(onSuccess)) {
+        onSuccess(res);
+      }
+    },
+    (err) => {
+      if (Utils.isFunction(onFail)) {
+        onFail(err);
+      }
+    }
+  );
+} 
+
 const logout = (onSuccess, onFail) => {
   return setTimeout(() => {
     let status = Auth.removeToken();
@@ -59,5 +81,6 @@ const validateToken = (token, onSuccess, onFail) => {
 export const UserAPI = {
   login: login,
   logout: logout,
+  signup: signup,
   validateToken: validateToken,
 };
