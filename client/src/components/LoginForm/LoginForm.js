@@ -4,24 +4,37 @@ import { useForm } from "react-hook-form";
 import { TextField } from "../../components/Input/TextField";
 import { PasswordField } from "../../components/Input/PasswordField";
 import { Button } from "../../components/Button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Shake } from "../Shake/Shake";
+import { usePopup } from "../Popup/Popup";
 
-export const LoginForm = ({changeWindow}) => {
+export const LoginForm = ({changeWindow, defaultValues}) => {
   const history = useHistory();
+  const popup = usePopup();
 
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit, setValue } = useForm({});
 
   const [wrongUsername, setWrongUsername] = useState(null);
   const [wrongPassword, setWrongPassword] = useState(null);
+
+  useEffect(() => {
+    setValue("username",defaultValues.username)
+    setValue("password",defaultValues.password)
+  },[defaultValues, setValue])
+
+ 
 
   const login = async (data) => {
     await UserAPI.login(
       { username: data.username, password: data.password },
       async (res) => {
-        console.log("SUCESS LOGIN");
-        //console.log("NEW TOKEN: ", res.body.token);
         history.push("/chat");
+
+        popup("bottomLeft", {
+          type:"success",
+          title:"Logged In",
+          body: "You are now logged in!"
+        })
       },
       (err) => {
         let message = err.body[0];

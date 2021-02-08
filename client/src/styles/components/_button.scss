@@ -46,6 +46,16 @@
         }
     }
 
+    &.success {
+        background: map-get($theme-colors, "success");
+        color: map-get($text-colors, "success");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors-hover, "success");
+        }
+    }
+
     &.warning {
         background: map-get($theme-colors, "warning");
         color: map-get($text-colors, "warning");
@@ -79,6 +89,19 @@
             background: map-get($theme-colors, "secondary");
             border: 1px solid map-get($theme-colors, "secondary");
             color: map-get($text-colors, "secondary");
+        }
+    }
+
+    &.outline-success {
+        background: transparent;
+        color: map-get($theme-colors, "success");
+        border: 1px solid map-get($theme-colors, "success");
+
+        &:hover,
+        &:focus {
+            background: map-get($theme-colors, "success");
+            border: 1px solid map-get($theme-colors, "success");
+            color: map-get($text-colors, "success");
         }
     }
 

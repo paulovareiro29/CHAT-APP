@@ -1,5 +1,4 @@
 import { forwardRef } from "react";
-import { Shake } from "../Shake/Shake";
 
 export const TextField = forwardRef(
   ({ name = "", placeholder = "", errors = null }, ref) => {

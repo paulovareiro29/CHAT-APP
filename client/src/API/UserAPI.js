@@ -39,7 +39,6 @@ const signup = (data, onSuccess, onFail) => {
       name: data.name
     },
     (res) => {
-      console.log("user created")
       if (Utils.isFunction(onSuccess)) {
         onSuccess(res);
       }

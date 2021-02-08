@@ -74,27 +74,3 @@ $slide-timing: 2s;
         }
     }
 }
-
-@-webkit-keyframes slide-in-left {
-    0% {
-        right: 120%;
-    }
-}
-
-@keyframes slide-in-left {
-    0% {
-        right: 120%;
-    }
-}
-
-@-webkit-keyframes slide-out-left {
-    0% {
-        right: 0;
-    }
-}
-
-@keyframes slide-out-left {
-    0% {
-        right: 0;
-    }
-}

@@ -4,13 +4,13 @@ import { Auth } from "../../Auth";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
 import { SignupForm } from "../../components/SignupForm/SignupForm";
 
-import LandingIMG from "../../images/landing-bg.svg";
-
 export const Landing = () => {
   const history = useHistory();
 
   const [window, setWindow] = useState("")
   
+  const [loginDefaultValues, setLoginDefaultValues] = useState({})
+
   if (Auth.getToken()) {
     console.log("Logout first");
     history.push("/chat");
@@ -24,13 +24,15 @@ export const Landing = () => {
       return
     }
     setWindow("login")
+    if(e && e.username && e.password){
+      setLoginDefaultValues(e)
+    }
   }
 
   return (
     <div id="landing" className={window}>
-
       <div className="login">
-        <LoginForm changeWindow={changeWindow}/>
+        <LoginForm changeWindow={changeWindow} defaultValues={loginDefaultValues}/>
       </div>
       <div className="signup">
         <SignupForm changeWindow={changeWindow}/>

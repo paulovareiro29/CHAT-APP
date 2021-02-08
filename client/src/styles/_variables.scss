@@ -9,6 +9,7 @@ $theme-colors: (
     "primary": #47DDFF,
     "secondary": #ced4da,
     "danger": #dc3545,
+    "success": #24D080,
     "warning": #ffcd39,
     "white": #fff,
     "black": #2C2C2C,
@@ -18,6 +19,7 @@ $text-colors: (
     "primary": white,
     "secondary": white,
     "danger" : white, 
+    "success": white,
     "warning": #2C2C2C,
     "white": #fff,
     "black": #2C2C2C,
@@ -26,6 +28,7 @@ $text-colors: (
 $theme-colors-hover: (
     "primary": #00b7ff,
     "secondary": #adb5bd,
+    "success": #22AF6E,
     "danger": #b02a37,
     "warning": #ffc107,
 )

@@ -1,4 +1,3 @@
-import { useHistory } from "react-router-dom";
 import { UserAPI } from "../../API/UserAPI";
 import { useForm, useWatch } from "react-hook-form";
 import { TextField } from "../Input/TextField";
@@ -6,33 +5,42 @@ import { PasswordField } from "../Input/PasswordField";
 import { Button } from "../Button/Button";
 import { useRef, useState } from "react";
 import { Shake } from "../Shake/Shake";
+import { usePopup } from "../Popup/Popup";
 
-export const SignupForm = ({ changeWindow }) => {
-  const history = useHistory();
-
-  const { register, errors, control, handleSubmit } = useForm();
+export const SignupForm = ({ changeWindow , defaultValues}) => {
+  const popup = usePopup()
+  const { register, errors, control, handleSubmit } = useForm({defaultValues: defaultValues});
 
   const password = useRef({});
   password.current = useWatch({ name: "password", control });
 
   const [userAlreadyExists, setUserAlreadyExists] = useState(null)
-
+  
   const signup = async (data) => {
-    //alert(JSON.stringify(data));
+
     UserAPI.signup(
       data,
       (res) => {
-        alert(JSON.stringify(res))
+        popup("bottomLeft", {
+          title: "Created new account!",
+          type: "success",
+          body: "You have created a new account successfuly!",
+        })
+        changeWindow({username: data.username, password: data.password})
       },
       (err) => {
-        //alert(JSON.stringify(err))
+
         let message = err.body[0];
         if (message.includes("Username")) {
           setUserAlreadyExists({ message: "- Username already exists" });
         } else {
           setUserAlreadyExists(null);
         }
-
+        popup("bottomLeft", {
+          title: "Error",
+          type: "danger",
+          body: "ERROR",
+        })
       }
     );
   };
